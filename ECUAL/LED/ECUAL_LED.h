@@ -31,7 +31,7 @@ typedef struct
 {
     uint8 led_port : 3;
     uint8 led_pin : 3;
-    uint8 led_state : 1;
+    led_state_t led_state : 1;
 }led_config_t;
 
 

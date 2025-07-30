@@ -38,7 +38,8 @@ Std_ReturnType ECUAL_LED_On(led_config_t *led_config)
     {
         gpio_config_t gpio_config = {.direction = GPIO_OUTPUT, .logic_level = led_config->led_state,
                                     .pin_index = led_config->led_pin, .port_index = led_config->led_port};
-        MCAL_GPIO_WritePin(&gpio_config, GPIO_HIGH);
+        MCAL_GPIO_WritePin(&gpio_config, GPIO_HIGH);        
+        led_config->led_state = LED_ON;
     }
     
     return return_status;   
@@ -54,6 +55,7 @@ Std_ReturnType ECUAL_LED_Off(led_config_t *led_config){
         gpio_config_t gpio_config = {.direction = GPIO_OUTPUT, .logic_level = led_config->led_state,
                                     .pin_index = led_config->led_pin, .port_index = led_config->led_port};
         MCAL_GPIO_WritePin(&gpio_config, GPIO_LOW);
+        led_config->led_state = LED_OFF;
     }
     
     return return_status;   
@@ -70,6 +72,7 @@ Std_ReturnType ECUAL_LED_Toggle(led_config_t *led_config)
         gpio_config_t gpio_config = {.direction = GPIO_OUTPUT, .logic_level = led_config->led_state,
                                     .pin_index = led_config->led_pin, .port_index = led_config->led_port};
         MCAL_GPIO_TogglePin(&gpio_config);
+        led_config->led_state = !led_config->led_state;
     }
     
     return return_status;   
