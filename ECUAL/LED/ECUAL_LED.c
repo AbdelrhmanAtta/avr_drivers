@@ -36,7 +36,7 @@ Std_ReturnType ECUAL_LED_On(led_config_t *led_config)
     if(NULL == led_config) return_status = E_NOT_OK;
     else
     {
-        gpio_config_t gpio_config = {.direction = GPIO_OUTPUT, .logic_level = led_config->led_state,
+        gpio_config_t gpio_config = {.direction = GPIO_OUTPUT,
                                     .pin_index = led_config->led_pin, .port_index = led_config->led_port};
         MCAL_GPIO_WritePin(&gpio_config, GPIO_HIGH);        
         led_config->led_state = LED_ON;
@@ -52,7 +52,7 @@ Std_ReturnType ECUAL_LED_Off(led_config_t *led_config){
     if(NULL == led_config) return_status = E_NOT_OK;
     else
     {
-        gpio_config_t gpio_config = {.direction = GPIO_OUTPUT, .logic_level = led_config->led_state,
+        gpio_config_t gpio_config = {.direction = GPIO_OUTPUT,
                                     .pin_index = led_config->led_pin, .port_index = led_config->led_port};
         MCAL_GPIO_WritePin(&gpio_config, GPIO_LOW);
         led_config->led_state = LED_OFF;
